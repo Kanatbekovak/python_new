@@ -452,38 +452,46 @@
 # print(f"Доступные квартиры: {apartments_ids}")
 
 
-def add_list(list,new_list):
-    for item in new_list:
-        if item not in list:
-            list.append(item)
-    return list
+# def add_list(list,new_list):
+#     for item in new_list:
+#         if item not in list:
+#             list.append(item)
+#     return list
 
-matter = ["ammonia", "benzen", "tolen", "alkan", "sulfurik asit"]
-matter2 = ["sodyum hidroksit", "hidrojen"]
+# matter = ["ammonia", "benzen", "tolen", "alkan", "sulfurik asit"]
+# matter2 = ["sodyum hidroksit", "hidrojen"]
 
-matter = add_list(matter, matter2)
-print(matter)
+# matter = add_list(matter, matter2)
+# print(matter)
 
-def delete_list(list_del,old_list):
-    for item in list_del[:]:
-        if item not in old_list:
-            list_del.remove(item)
-    return list_del
+# def delete_list(list_del,old_list):
+#     for item in list_del[:]:
+#         if item not in old_list:
+#             list_del.remove(item)
+#     return list_del
 
-matter = delete_list(matter, matter2)
-print(matter)
+# matter = delete_list(matter, matter2)
+# print(matter)
 
-def find_list(list):
-    asit_list = []
-    for item in list:
-        if "asit" in item:
-            asit_list.append(item)
-    if len(asit_list) > 0:
-        return asit_list
-    else:
-        return "not asit"
+# def find_list(list):
+#     asit_list = []
+#     for item in list:
+#         if "asit" in item:
+#             asit_list.append(item)
+#     if len(asit_list) > 0:
+#         return asit_list
+#     else:
+#         return "not asit"
 
 
-matter = find_list(matter)
-print(f"Найденные кислоты: {matter}")
+# matter = find_list(matter)
+# print(f"Найденные кислоты: {matter}")
+
+# print(my_string.upper())  # ALICE WORLD
+# print(my_string.lower())  #alice world
+
+# account = "kanatbekova kaniet"
+# print(account.title())  # upper(),capitalize(),upper(),title()
+# print(account.count("a"))
+# print(account.find("i"))
 
