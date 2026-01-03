@@ -364,14 +364,14 @@
 # for file_name in file_names:
 #     print(file_name)
 
-greeting = "Hello, world"
-count_o = 0
-for char in greeting:
-    if char == "o":
-        count_o += 1
-        print(char)
+# greeting = "Hello, world"
+# count_o = 0
+# for char in greeting:
+#     if char == "o":
+#         count_o += 1
+#         print(char)
 
-print(count_o)
+# print(count_o)
 
 # caхар для питона 
 
@@ -391,12 +391,99 @@ print(count_o)
 #     for char in student:
 #         print(char)
 
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+# numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
-for number in numbers:
-    if number % 2 == 0:
-        continue
-    print(number)
-    if number == 10:
-        break
-    print(number)
+# for number in numbers:
+#     if number % 2 == 0:
+#         continue
+#     print(number)
+#     if number == 10:
+#         break
+#     print(number)
+
+#//////////////////////////////////////////////////////////////
+
+# matter = ["ammonia", "benzen", "tolen", "alkan", "sulfurik asit"]
+# matter2 = ["sodyum hidroksit"]
+# matter.extend(matter2) # добавить
+# print(matter)
+# old_stuff = ["ammonia", "benzen","tolen", "alkan", "sulfurik asit"]
+# for item in old_stuff:
+#     if item in matter:
+#         matter.remove(item)
+# print(matter)
+
+
+# def add_unique_items(main_list, new_items):
+#     for item in new_items:
+#         if item not in main_list: # Проверка на уникальность
+#             main_list.append(item)
+#     return main_list
+
+
+# # Применяем для ХИМИИ
+# matter = ["ammonia", "benzen"]
+# new_chem = ["benzen", "tolen", "alkan"] # Benzen уже есть!
+# matter = add_unique_items(matter, new_chem)
+
+# print(matter) 
+# # Результат: ['ammonia', 'benzen', 'tolen', 'alkan'] 
+# # (Второй benzen не добавился, и это правильно!)
+
+
+# # Создаем инструмент
+# def clean_my_list(main_list, items_to_remove):
+#     for item in items_to_remove:
+#         if item in main_list:
+#             main_list.remove(item)
+#     return main_list
+
+
+# # Теперь используем его для ХИМИИ
+# matter = ["ammonia", "benzen", "tolen", "alkan", "sulfurik asit", "sodyum hidroksit"]
+# old_chem = ["ammonia", "benzen"]
+# matter = clean_my_list(matter, old_chem)
+# print(f"Химия после чистки: {matter}")
+
+# # Теперь этот же код для НЕДВИЖИМОСТИ (ID квартир)
+# apartments_ids = [1, 2, 3, 4, 5]
+# sold_ids = [1, 3]
+# apartments_ids = clean_my_list(apartments_ids, sold_ids)
+# print(f"Доступные квартиры: {apartments_ids}")
+
+
+def add_list(list,new_list):
+    for item in new_list:
+        if item not in list:
+            list.append(item)
+    return list
+
+matter = ["ammonia", "benzen", "tolen", "alkan", "sulfurik asit"]
+matter2 = ["sodyum hidroksit", "hidrojen"]
+
+matter = add_list(matter, matter2)
+print(matter)
+
+def delete_list(list_del,old_list):
+    for item in list_del[:]:
+        if item not in old_list:
+            list_del.remove(item)
+    return list_del
+
+matter = delete_list(matter, matter2)
+print(matter)
+
+def find_list(list):
+    asit_list = []
+    for item in list:
+        if "asit" in item:
+            asit_list.append(item)
+    if len(asit_list) > 0:
+        return asit_list
+    else:
+        return "not asit"
+
+
+matter = find_list(matter)
+print(f"Найденные кислоты: {matter}")
+
