@@ -127,8 +127,8 @@
 
 # print(' ===result=== ')
 
-# number_entrance = (number_flat - 1) // 20 + 1
-# number_room = (number_flat - 1) % 20 // 4 + 1
+# number_entrance = (number_flat - 1) // 20
+# number_room = (number_flat) % 20 // 4 
 # print('Entrance: ',number_entrance)
 # print('Flat: ',number_room)
 
@@ -495,3 +495,167 @@
 # print(account.count("a"))
 # print(account.find("i"))
 
+# //////////////////////////////////////////////////////////////////////
+
+# age = 20
+# name = 'Swaroop'
+
+# print('{0} was {1} years old when he wrote this book'.format(name, age))
+# print('Why is {0} playing with that python?'.format(name))
+
+# print("I am {0} and I am {1} years old".format(name, age))
+
+# # print('{name} was {age} years old when he wrote this book'.format(name=name, age=age))
+# # print('Why is {name} playing with that python?'.format(name=name))
+
+# print('{0:.3f}'.format(25.5/5))
+
+
+# ///////////////////////////  функции  ///////////////////////////////////////////
+
+# def count_vowels(string):
+#     VOWELS = "aeiouAEIOU"
+#     count = 0
+#     for char in string:
+#         if char in VOWELS:
+#             count += 1
+            
+#     return count
+
+# print(count_vowels("Hello World"))
+# enter_text = input("enter your text:")
+# word = count_vowels(enter_text)
+# print(word)
+
+
+# def info():
+#     pass #заглушки для функции чтобы они временно не работали
+
+# info()
+
+
+# def format_date(day: int, month: str):
+#     return f"The date is {day} of {month}"
+
+# print(format_date(15, "May"))
+# print(format_date("May", 12))
+# print(format_date(day=15,month="June"))
+# print(format_date(month="June",day=15))
+
+
+# def custom_greeting(*, name: str, greeting: str = "Hello") -> str:
+#     return f'{greeting}, {name}'
+
+# print(custom_greeting(name="Kaniet", greeting="Good morning"))
+# print(custom_greeting(name="Kaniet"))
+
+
+# comfortable_temperature = 25
+
+# def get_diff_from_comfortable_tem(*,temperature: int) -> int:
+#     return comfortable_temperature - temperature
+
+# print(get_diff_from_comfortable_tem(temperature=20))
+
+
+# defaul_level_experience = 200
+
+# def is_level_up(*, current: int, gained: int) -> int:
+#     total = current + gained
+#     level_up = False
+
+#     if total >= defaul_level_experience:
+#         level_up = True
+    
+#     return level_up
+
+# print(is_level_up(current=150,gained=60))  #True
+# print(is_level_up(current=10,gained=60))  #False
+
+
+# ///////////////////////////  цикл while  ///////////////////////////////////////////
+
+# цикл for повторяется определенное количество раз (чащу всего количество его итерации равно количество коллекции которые мы перебираем)
+
+# цикл while может повторятся неопределенное количество раз (это цикл который используется по условию)
+
+# counter = 1
+
+# while counter <= 5:
+#     print(f"Counter is {counter}")
+#     counter += 1
+
+
+# my_list = [0, 1, 2]
+
+# while my_list:
+#     element = my_list.pop()
+#     print(f"element: {element}")
+
+# print(my_list)
+
+
+# while True:
+#     print("hi")  #бусконечный цикл
+
+# while True:
+#     answer = input("enter a number:")
+#     if answer == "quit":
+#         break
+#     print("you entered: {answer}")
+
+
+import random 
+
+HEADS = "heads"
+TAILS = "tails"
+
+COIN_VALUES = [HEADS,TAILS]
+
+def flip_coin():
+    return random.choice(COIN_VALUES)
+
+print(flip_coin())
+
+def play_martingale(*, start: int, min_ber: int,max_bet: int) ->int:
+    steps_to_loose = 0
+    current_funds = start
+    current_bet = min_ber
+
+    while current_funds > 0:
+        # print("============")
+        steps_to_loose += 1
+        current_funds -=current_bet
+        # print(f"{current_funds=}, {current_bet=}")
+        flipped_coin_value = flip_coin()
+        if flipped_coin_value == HEADS:
+            win = current_bet * 2
+            # print(f"{win=}")
+            current_funds += win
+            current_bet = min_ber
+        else:
+            # print("loose")
+            current_bet *= 2
+            if current_bet > max_bet:
+                current_bet = min_ber
+            if current_bet > current_funds:
+                current_bet = current_funds
+
+    return steps_to_loose
+
+# print(play_martingale(start=100,min_ber=1,max_bet=100))
+def simulate_martingale_for_n_players(*,start:int,min_ber:int,max_bet:int,n_games) -> float:
+    total_steps_to_loose = 0
+    for i in range(n_games):
+        steps_to_loose =play_martingale(start=start,min_ber=min_ber,max_bet=max_bet)
+        total_steps_to_loose += steps_to_loose
+
+
+    return total_steps_to_loose / n_games
+
+print(simulate_martingale_for_n_players(
+    n_games=10,
+    start=1000,
+    min_ber=1,
+    max_bet=100
+))
